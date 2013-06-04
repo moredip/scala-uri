@@ -68,6 +68,8 @@ case class Uri (
       if(e.isDefined) encode(p, e.get) else p
     }).mkString("/")
   }
+  
+  def /(newComponent:String):Uri = copy(pathParts = (newComponent :: pathParts.reverse).reverse )
 
   /**
    * Replaces the all existing Query String parameters with the specified key with a single Query String parameter
